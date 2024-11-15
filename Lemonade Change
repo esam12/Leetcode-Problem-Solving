@@ -1,23 +1,70 @@
-860. Lemonade Change
-The Solution:
-class Solution(object):
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lemonade Change Solution in Python">
+    <title>Lemonade Change Solution</title>
+    <!-- تضمين مكتبة Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lemonade Change Solution</h1>
+    <p>This is a Python solution for the <a href="https://leetcode.com/problems/lemonade-change/" target="_blank">860. Lemonade Change</a> problem on LeetCode.</p>
+    <h2>Problem Statement</h2>
+    <p>
+        At a lemonade stand, each lemonade costs $5. Customers queue to buy one at a time, paying with $5, $10, or $20 bills.
+        The goal is to provide the correct change to each customer while ensuring that the net transaction is $5 for each lemonade.
+    </p>
+    <h2>Python Solution</h2>
+    <pre>
+        <code class="language-python">
+class Solution:
     def lemonadeChange(self, bills):
         """
-        :type bills: List[int]
-        :rtype: bool
-        """
-        five, ten = 0, 0  
+        Determines if change can be provided to each customer in line.
 
-        for i in bills:
-            if i == 5:
+        Args:
+            bills (List[int]): A list of bills where each bill is either 5, 10, or 20.
+
+        Returns:
+            bool: True if change can be provided to every customer, False otherwise.
+        """
+        five, ten = 0, 0  # Counters for $5 and $10 bills
+
+        for bill in bills:
+            if bill == 5:
                 five += 1
-            elif i == 10:
+            elif bill == 10:
                 if five > 0:
                     five -= 1
-                    ten += 1 
+                    ten += 1
                 else:
-                    return False 
-            elif i == 20:
+                    return False
+            elif bill == 20:
                 if ten > 0 and five > 0:
                     ten -= 1
                     five -= 1
@@ -26,3 +73,18 @@ class Solution(object):
                 else:
                     return False
         return True
+        </code>
+    </pre>
+    <h2>Usage</h2>
+    <p>To use this solution, import the <code>Solution</code> class and call the <code>lemonadeChange</code> method:</p>
+    <pre>
+        <code class="language-python">
+from src.solution import Solution
+
+bills = [5, 5, 5, 10, 20]
+print(Solution().lemonadeChange(bills))  # Expected output: True
+        </code>
+    </pre>
+    <p>For more information, visit the <a href="https://leetcode.com/problems/lemonade-change/" target="_blank">problem page</a>.</p>
+</body>
+</html>
